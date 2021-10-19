@@ -1,0 +1,90 @@
+I"¼<h1> Table of Contents </h1>
+<ul id="markdown-toc">
+  <li><a href="#basic-algebra" id="markdown-toc-basic-algebra">Basic Algebra</a>    <ul>
+      <li><a href="#distributed-memory" id="markdown-toc-distributed-memory">Distributed memory</a></li>
+    </ul>
+  </li>
+  <li><a href="#sparse-linear-algebra" id="markdown-toc-sparse-linear-algebra">Sparse Linear Algebra</a>    <ul>
+      <li><a href="#shortcuts" id="markdown-toc-shortcuts">Shortcuts</a></li>
+      <li><a href="#lanczos" id="markdown-toc-lanczos">Lanczos</a></li>
+    </ul>
+  </li>
+  <li><a href="#operators" id="markdown-toc-operators">Operators</a></li>
+  <li><a href="#models" id="markdown-toc-models">Models</a>    <ul>
+      <li><a href="#shared-memory" id="markdown-toc-shared-memory">Shared memory</a></li>
+      <li><a href="#distributed-memory-1" id="markdown-toc-distributed-memory-1">Distributed memory</a></li>
+    </ul>
+  </li>
+  <li><a href="#symmetries" id="markdown-toc-symmetries">Symmetries</a></li>
+</ul>
+
+<h1 id="basic-algebra">Basic Algebra</h1>
+<ul>
+  <li><a href="../../docs/f_MatrixReal/index.html">MatrixReal</a></li>
+  <li><a href="../../docs/f_MatrixCplx/index.html">MatrixCplx</a></li>
+  <li><a href="../../docs/f_Apply/index.html">Apply</a></li>
+  <li><a href="../../docs/f_Inner/index.html">Inner</a></li>
+</ul>
+
+<h2 id="distributed-memory">Distributed memory</h2>
+<ul>
+  <li><a href="../../docs/f_StableDot/index.html">StableDot</a></li>
+  <li><a href="../../docs/f_StableNorm/index.html">StableNorm</a></li>
+</ul>
+
+<h1 id="sparse-linear-algebra">Sparse Linear Algebra</h1>
+<h2 id="shortcuts">Shortcuts</h2>
+<ul>
+  <li><a href="../../docs/f_E0Real/index.html">E0Real</a></li>
+  <li><a href="../../docs/f_E0Cplx/index.html">E0Cplx</a></li>
+  <li><a href="../../docs/f_GroundstateReal/index.html">GroundstateReal</a></li>
+  <li><a href="../../docs/f_GroundstateCplx/index.html">GroundstateCplx</a></li>
+</ul>
+
+<h2 id="lanczos">Lanczos</h2>
+<ul>
+  <li><a href="../../docs/f_LanczosGeneric/index.html">LanczosGeneric</a></li>
+  <li><a href="../../docs/Tmatrix/index.html">Tmatrix</a></li>
+  <li><a href="../../docs/f_LanczosEigenvalues/index.html">LanczosEigenvalues</a></li>
+  <li><a href="../../docs/f_LanczosEigenvaluesInplace/index.html">LanczosEigenvaluesInplace</a></li>
+  <li><a href="../../docs/f_LanczosEigenvaluesReal/index.html">LanczosEigenvaluesReal</a></li>
+  <li><a href="../../docs/f_LanczosEigenvaluesCplx/index.html">LanczosEigenvaluesCplx</a></li>
+  <li><a href="../../docs/f_LanczosEigenvector/index.html">LanczosEigenvector</a></li>
+  <li><a href="../../docs/f_LanczosEigenvectorInplace/index.html">LanczosEigenvectorInplace</a></li>
+  <li><a href="../../docs/f_LanczosEigenvectorReal/index.html">LanczosEigenvectorReal</a></li>
+  <li><a href="../../docs/f_LanczosEigenvectorCplx/index.html">LanczosEigenvectorCplx</a></li>
+</ul>
+
+<h1 id="operators">Operators</h1>
+<ul>
+  <li><a href="../../docs/Bond/index.html">Bond</a></li>
+  <li><a href="../../docs/BondList/index.html">BondList</a></li>
+  <li><a href="../../docs/Couplings/index.html">Couplings</a></li>
+</ul>
+
+<h1 id="models">Models</h1>
+
+<h2 id="shared-memory">Shared memory</h2>
+<ul>
+  <li><a href="../../docs/Spinhalf3Cbit_t3E/index.html">Spinhalf</a></li>
+  <li><a href="../../docs/SpinhalfSymmetric3Cbit_.a252e6ff/index.html">SpinhalfSymmetric</a></li>
+  <li><a href="../../docs/Electron3Cbit_t3E/index.html">Electron</a></li>
+  <li><a href="../../docs/ElectronSymmetric3Cbit_.a47e0fb2/index.html">ElectronSymmetric</a></li>
+  <li><a href="../../docs/tJ3Cbit_t3E/index.html">tJ</a></li>
+  <li><a href="../../docs/tJSymmetric3Cbit_t2C20G.33db605a/index.html">tJSymmetric</a></li>
+</ul>
+
+<h2 id="distributed-memory-1">Distributed memory</h2>
+<ul>
+  <li><a href="../../docs/SpinhalfMPI3Cbit_t3E/index.html">SpinhalfMPI</a></li>
+  <li><a href="../../docs/ElectronMPI3Cbit_t3E/index.html">ElectronMPI</a></li>
+</ul>
+
+<h1 id="symmetries">Symmetries</h1>
+<ul>
+  <li><a href="../../docs/PermutationGroup/index.html">PermutationGroup</a></li>
+  <li><a href="../../docs/PermutationGroupAction/index.html">PermutationGroupAction</a></li>
+  <li><a href="../../docs/PermutationGroupLookup3Cbit_t3E/index.html">PermutationGroupLookup</a></li>
+  <li><a href="../../docs/Representation/index.html">Representation</a></li>
+</ul>
+:ET
