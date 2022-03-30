@@ -1,0 +1,10 @@
+I"˜<h1 class="fs-9" id="hydra">Hydra</h1>
+
+<p class="fs-6 fw-300">An efficient C++ library for performing Exact Diagonalizations of quantum many-body systems.</p>
+
+<p><a href="pages/tutorial" class="btn btn-primary fs-5 mb-4 mb-md-0 mr-2">View Tutorials</a> <a href="https://github.com/awietek/hydra" class="btn fs-5 mb-4 mb-md-0">Source on GitHub</a></p>
+
+<hr />
+
+<h2 id="getting-started">Getting started</h2>
+:ET
