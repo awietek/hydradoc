@@ -36,14 +36,20 @@ cd /path/to/hydra
 ```
 
 **Step 2:**
-Clone the hydra and lila libraries from github
+Clone the hydra and [LiLA](https://github.com/awietek/lila) libraries from github
 
 ```bash
-git clone git@github.com:awietek/lila.git
-git clone git@github.com:awietek/hydra.git
+git clone https://github.com/awietek/hydra.git
+git clone https://github.com/awietek/lila.git
 ```
 
-*Remark:* LiLA is a lightweight Linear Algebra library, which wraps the Fortran interface of Blas/Lapack.
+*Remark:* [LiLA](https://github.com/awietek/lila) is a lightweight Linear Algebra library, which wraps the Fortran interface of Blas/Lapack. It is a header-only library, so no installation and compilation is required
+
+Optionally, you can also download the [lime](https://github.com/awietek/lime) library, which is a convenient C++ wrapper for reading and writing [hdf5](https://portal.hdfgroup.org/display/HDF5) files, useful for storing results of computations. 
+
+```bash
+git clone https://github.com/awietek/lime.git
+```
 
 **Step 3:**
 Create a copy of "options.mk"

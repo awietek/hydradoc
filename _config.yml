@@ -107,14 +107,14 @@ ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (t
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-katex
+  # - jekyll-katex
 
 markdown: kramdown
 kramdown:
   syntax_highlighter_opts:
     block:
       line_numbers: false
-  math_engine: katex
+  math_engine: mathjax
   math_engine_opts:
     preview:         true
     preview_as_code: true
