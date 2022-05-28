@@ -1,0 +1,132 @@
+I"�<h1 class="no_toc" id="installation">Installation</h1>
+<p class="fs-6 fw-300">Instructions how to compile the library, run tests, and compile applications</p>
+
+<h2 class="no_toc text-delta" id="table-of-contents">Table of contents</h2>
+
+<ol id="markdown-toc">
+  <li><a href="#prerequisites" id="markdown-toc-prerequisites">Prerequisites</a></li>
+  <li><a href="#compiling-the-library" id="markdown-toc-compiling-the-library">Compiling the library</a></li>
+  <li><a href="#running-tests" id="markdown-toc-running-tests">Running tests</a></li>
+  <li><a href="#compiling-applications" id="markdown-toc-compiling-applications">Compiling applications</a></li>
+</ol>
+
+<hr />
+
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+  <li>A C++ compiler that supports C++17, e.g. <code class="language-plaintext highlighter-rouge">g++</code> or <code class="language-plaintext highlighter-rouge">clang</code>, and <code class="language-plaintext highlighter-rouge">Make</code></li>
+  <li>An implementation of the Blas/Lapack routines, e.g. the Netlib Blas/Lapack, IntelMKL or Accelerate on OSX.</li>
+  <li><code class="language-plaintext highlighter-rouge">git</code> version control system</li>
+  <li>(optional) An implementation of the MPI standard, e.g. OpenMPI</li>
+</ul>
+
+<hr />
+
+<h2 id="compiling-the-library">Compiling the library</h2>
+
+<p><strong>Step 1:</strong>
+Choose an installation directory</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /path/to/hydra
+</code></pre></div></div>
+
+<p><strong>Step 2:</strong>
+Clone the hydra and <a href="https://github.com/awietek/lila">LiLA</a> libraries from github</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/awietek/hydra.git
+git clone https://github.com/awietek/lila.git
+</code></pre></div></div>
+
+<p><em>Remark:</em> <a href="https://github.com/awietek/lila">LiLA</a> is a lightweight Linear Algebra library, which wraps the Fortran interface of Blas/Lapack. It is a header-only library, so no installation and compilation is required</p>
+
+<p>Optionally, you can also download the <a href="https://github.com/awietek/lime">lime</a> library, which is a convenient C++ wrapper for reading and writing <a href="https://portal.hdfgroup.org/display/HDF5">hdf5</a> files, useful for storing results of computations.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/awietek/lime.git
+</code></pre></div></div>
+
+<p><strong>Step 3:</strong>
+Create a copy of “options.mk”</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>hydra
+<span class="nb">cp </span>options.mk.sample options.mk
+</code></pre></div></div>
+
+<p><strong>Step 4:</strong>
+Modify your copy of “options.mk” for your system using your favorite text editor. The instructions for doing so are in the file “options.mk”.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>emacs options.mk
+</code></pre></div></div>
+
+<p><strong>Step 5:</strong>
+Compile the library</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>If you want to use the MPI features of Hydra, you will also need to compile
+the MPI-library</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make mpi
+</code></pre></div></div>
+
+<p>That’s it, you’re all set!</p>
+
+<hr />
+
+<h2 id="running-tests">Running tests</h2>
+
+<p>In order to make sure, everything is workign properly, you could run full test suite on your system.</p>
+
+<p><strong>Step 1:</strong> Compile the tests</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make <span class="nb">test</span>
+</code></pre></div></div>
+<p>This will create an executable “test/tests”. If you would also like to test the MPI features, compile the MPI tests</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make testmpi
+</code></pre></div></div>
+<p>This creates the executable “testmpi/tests”</p>
+
+<p><strong>Step 2:</strong> Run the tests</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd test</span>
+./tests
+</code></pre></div></div>
+<p>You can run the MPI tests (e.g. using 4 cores) using</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>testmpi
+mpirun <span class="nt">-np</span> 4 tests
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="compiling-applications">Compiling applications</h2>
+
+<p>When using Hydra, you will need to write a separate application. This application then needs to be linked to the hydra and lapack libraries and the lila and hydra headers need to be included. We have several examples of applications in the folder <code class="language-plaintext highlighter-rouge">examples</code> in the root directory of hydra. To compile these applications, you could use a Makefile. In the folder <code class="language-plaintext highlighter-rouge">examples/spinhalf_chain</code> you find the application code <code class="language-plaintext highlighter-rouge">spinhalf_chain.cpp</code>, which can be compiled using the <code class="language-plaintext highlighter-rouge">Makefile</code> in the same folder. Let’s have a look at it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Define the compiler and the compile options</span>
+cc       <span class="o">=</span> clang++
+copt     <span class="o">=</span> <span class="nt">-O3</span> <span class="nt">-Ofast</span> <span class="nt">-mavx</span> <span class="nt">-std</span><span class="o">=</span>c++17 <span class="nt">-m64</span> <span class="nt">-Wno-return-type-c-linkage</span>
+
+<span class="c"># Set the directory of lila and hydra here</span>
+liladir  <span class="o">=</span> /Users/awietek/Research/Software/lila
+hydradir <span class="o">=</span> /Users/awietek/Research/Software/hydra
+
+<span class="c"># Choose the lapack backend for lila</span>
+lilabackend <span class="o">=</span> <span class="nt">-DLILA_USE_ACCELERATE</span>
+lapacklib   <span class="o">=</span> <span class="nt">-framework</span> Accelerate
+
+all:
+	<span class="si">$(</span>cc<span class="si">)</span> <span class="si">$(</span>copt<span class="si">)</span> <span class="nt">-I</span><span class="si">$(</span>liladir<span class="si">)</span> <span class="nt">-I</span><span class="si">$(</span>hydradir<span class="si">)</span> <span class="nt">-L</span><span class="si">$(</span>hydradir<span class="si">)</span>/lib <span class="si">$(</span>lilabackend<span class="si">)</span> <span class="si">$(</span>lapacklib<span class="si">)</span> <span class="nt">-lhydra</span> spinhalf_chain.cpp <span class="nt">-o</span> spinhalf_chain
+</code></pre></div></div>
+
+<p>In the first two lines we set the compiler and some options for it. Next we define the directories where the lila and hydra libraries are found. Then we set Blas/Lapack Backend for lila and add the lapack library, in this case the Accelerate framework. The last line is the actual compilation command. You can then compile the application using</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>make
+</code></pre></div></div>
+
+<p>and run the application with</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./spinhalf_chain
+</code></pre></div></div>
+
+<p>Et voilà, you just ran your first ED using hydra!</p>
+:ET

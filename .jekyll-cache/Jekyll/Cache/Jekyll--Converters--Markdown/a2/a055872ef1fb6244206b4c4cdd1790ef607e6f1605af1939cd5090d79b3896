@@ -1,0 +1,54 @@
+I"Ø<h2 id="spectrum-of-heisenberg-chain-without-lattice-symmetries">Spectrum of Heisenberg chain without lattice symmetries</h2>
+
+<p>In this example we compute the full energy spectrum of the \(S=1/2\) Heisenberg chain on a periodic chain lattice in one dimension. The Hamiltonian is given by</p>
+
+\[H = J\sum_{\langle i,j \rangle} \mathbf{S}_i \cdot \mathbf{S}_j\]
+
+<p>where \(\mathbf{S}_i = (S_i^x, S_i^y, S_i^z)\) are the spin \(S=1/2\) operators and \(\langle i,j \rangle\) denotes summation over nearest-meighbor sites \(i\) and \(j\). We set \(J=1\). This model conserves the total spin \(S^z_{tot} = \sum_i S^z_i\). We compute the energy spectrum both on an \(N=8\) site lattice, first with \(S^z_{tot} = 0\) and then without conservation of \(S^z_{tot}\). The lowest eigenvalues are found to agree.</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;hydra/all.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">using</span> <span class="k">namespace</span> <span class="n">hydra</span><span class="p">;</span>
+
+  <span class="c1">// Define the number of lattice sites, number of upspins</span>
+  <span class="kt">int</span> <span class="n">n_sites</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">n_up</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+  <span class="c1">// Create the corresponding block of the Spinhalf Hilbertspace </span>
+  <span class="k">auto</span> <span class="n">block</span> <span class="o">=</span> <span class="n">Spinhalf</span><span class="p">(</span><span class="n">n_sites</span><span class="p">,</span> <span class="n">n_up</span><span class="p">);</span>
+
+  <span class="c1">// Define Heisenberg chain with interaction-type HB and coupling J</span>
+  <span class="n">BondList</span> <span class="n">bonds</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">s</span> <span class="o">&lt;</span> <span class="n">n_sites</span><span class="p">;</span> <span class="o">++</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">bonds</span> <span class="o">&lt;&lt;</span> <span class="n">Bond</span><span class="p">(</span><span class="s">"HB"</span><span class="p">,</span> <span class="s">"J"</span><span class="p">,</span> <span class="p">{</span><span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">n_sites</span><span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Set the coupling J to 1.0</span>
+  <span class="n">Couplings</span> <span class="n">couplings</span><span class="p">;</span>
+  <span class="n">couplings</span><span class="p">[</span><span class="s">"J"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+
+  <span class="c1">// Compute the full Hamiltonian matrix (real, double precision)</span>
+  <span class="k">auto</span> <span class="n">H</span> <span class="o">=</span> <span class="n">MatrixReal</span><span class="p">(</span><span class="n">bonds</span><span class="p">,</span> <span class="n">couplings</span><span class="p">,</span> <span class="n">block</span><span class="p">,</span> <span class="n">block</span><span class="p">);</span>
+
+  <span class="c1">// Perform a full diagonalization</span>
+  <span class="k">auto</span> <span class="n">eigs</span> <span class="o">=</span> <span class="n">lila</span><span class="o">::</span><span class="n">EigenvaluesSym</span><span class="p">(</span><span class="n">H</span><span class="p">);</span>
+
+  <span class="c1">// Output the eigenvalues</span>
+  <span class="n">LilaPrint</span><span class="p">(</span><span class="n">eigs</span><span class="p">);</span>
+
+  <span class="c1">/////</span>
+  <span class="c1">// Alternatively, compute spectrum without Sz conservation</span>
+
+  <span class="c1">// Create spinhalf block without Sz quantum number, ...</span>
+  <span class="k">auto</span> <span class="n">block_no_sz</span> <span class="o">=</span> <span class="n">Spinhalf</span><span class="p">(</span><span class="n">n_sites</span><span class="p">);</span>
+
+  <span class="c1">// ... create the Hamiltonian and compute eigenvalues</span>
+  <span class="k">auto</span> <span class="n">H_no_sz</span> <span class="o">=</span> <span class="n">MatrixReal</span><span class="p">(</span><span class="n">bonds</span><span class="p">,</span> <span class="n">couplings</span><span class="p">,</span> <span class="n">block_no_sz</span><span class="p">,</span> <span class="n">block_no_sz</span><span class="p">);</span>
+  <span class="k">auto</span> <span class="n">eigs_no_sz</span> <span class="o">=</span> <span class="n">lila</span><span class="o">::</span><span class="n">EigenvaluesSym</span><span class="p">(</span><span class="n">H_no_sz</span><span class="p">);</span>
+  <span class="n">LilaPrint</span><span class="p">(</span><span class="n">eigs_no_sz</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">EXIT_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+:ET
