@@ -3,7 +3,7 @@ layout: page
 title: Dynamical structure factor of the Heisenberg S=1/2 chain, employing momentum conservation
 nav_include: false
 ---
-## Computing the ground state energy of the S=1/2 chain, employing momentum conservation 
+## Dynamical structure factor of the Heisenberg S=1/2 chain, employing momentum conservation 
 
 We compute the ground state energy of the $$S=1/2$$ Heisenberg chain with periodic boundary conditions in each momentum sector $$k$$. The Hamiltonian is given by
 

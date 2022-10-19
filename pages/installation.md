@@ -22,7 +22,6 @@ Instructions how to compile the library, run tests, and compile applications
 * A C++ compiler that supports C++17, e.g. `g++` or `clang`, and `Make`
 * An implementation of the Blas/Lapack routines, e.g. the Netlib Blas/Lapack, IntelMKL or Accelerate on OSX.
 * `git` version control system
-* (optional) An implementation of the MPI standard, e.g. OpenMPI
 
 ---
 
@@ -70,42 +69,26 @@ You can also use multithreading to compile faster, i.e.
 make -j
 ```
 
-If you want to use the MPI features of Hydra, you will also need to compile
-the MPI-library
-
-```bash
-make mpi
-```
-
 That's it, you're all set!
 
 ---
 
 ## Running tests
 
-In order to make sure, everything is workign properly, you could run full test suite on your system.
+In order to make sure, everything is workign properly, you can run full test suite on your system.
 
 **Step 1:** Compile the tests
 
 ```bash
 make test
 ```
-This will create an executable "test/tests". If you would also like to test the MPI features, compile the MPI tests
 
-```bash
-make testmpi
-```
-This creates the executable "testmpi/tests"
+This creates the executable "test/tests"
 
 **Step 2:** Run the tests
 ```bash
 cd test
 ./tests
-```
-You can run the MPI tests (e.g. using 4 cores) using
-```bash
-cd testmpi
-mpirun -np 4 tests
 ```
 
 ---

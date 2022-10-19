@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Tutorial
+title: User Guide
 nav_include: true
 nav_order: 4
 ---
 
-# Tutorial
+# User guide
 {: .no_toc }
 A step-by-step guide to using Hydra
 {: .fs-6 .fw-300 }
@@ -40,14 +40,14 @@ $$ \vert \mathbf{\sigma} \rangle = \vert \sigma_1 \rangle \cdots \vert \sigma_N 
 Representing the Hamiltonian $$H$$ in this basis will yield a sparse matrix, whose non-zero matrix elements are distributed something like this:
 
 {:refdef: style="text-align: center;"}
-![]({{ site.url }}/hydradoc/assets/img/block.png#center){: width="200" }
+![]({{ site.baseurl }}/assets/img/block.png#center){: width="200" }
 {: refdef}
 
 
 Symmetries of $$H$$ are operators $$S$$, which commute with the Hamiltonian $$[H,S] = 0$$. We can choose a basis of the Hilbert space such that every state transforms according to an irreducible representation $$\rho$$, also called quantum numbers, of the group of symmetries. If we express the Hamiltonian in this basis, it will attain a block diagonal form,
 
 {:refdef: style="text-align: center;"}
-![]({{ site.url }}/hydradoc/assets/img/block_decomp.png){: width="500" }
+![]({{ site.baseurl }}/assets/img/block_decomp.png){: width="500" }
 {: refdef}
 
 For the Heisenberg chain above, the symmetries include the continuous $$U(1)$$ spin rotation symmetry,

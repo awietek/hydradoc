@@ -18,11 +18,17 @@ Sample application codes for various tasks performed using ED
 1. TOC
 {:toc}
 
-## Computing ground state energies
+## Groundstate energies
 
 - [Groundstate energy of $$S=1/2$$ Heisenberg chain, "Hello World"]({{ site.baseurl }}{% link pages/examples/spinhalf_chain.md %})
 - [Groundstate energy of $$S=1/2$$ Heisenberg chain, with momentum conservation]({{ site.baseurl }}{% link pages/examples/spinhalf_chain_syms.md %})
 
-## Computing dynamical spectral functions at $$T=0$$
+## Full spectrum
+- [Full spectrum of a randomly coupled $$t-J$$ model]({{ site.baseurl }}{% link pages/examples/tj_random_all_to_all.md %})
+
+## Time evolution
+- [Time evolution in the transverse field Ising model]({{ site.baseurl }}{% link pages/examples/tfi_timeevolve.md %})
+
+## Dynamical spectral functions at $$T=0$$
 - [Dynamical spin structure factor of $$S=1/2$$ Heisenberg chain]({{ site.baseurl }}{% link pages/examples/hb_chain_dynamical_sf_nosyms.md %})
 - [Dynamical spin structure factor of $$S=1/2$$ Heisenberg chain, employing momentum conservation]({{ site.baseurl }}{% link pages/examples/hb_chain_dynamical_sf.md %})
