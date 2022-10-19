@@ -18,10 +18,11 @@ Sample application codes for various tasks performed using ED
 1. TOC
 {:toc}
 
-## Energy spectra using full ED
-### Without lattice symmetries
+## Computing ground state energies
 
-- [Heisenberg chain with $$S=1/2$$]({{ site.baseurl }}{% link pages/examples/hb_chain_spectra_no_syms.md %})
-- [$$t-J$$ model with random all-to-all couplings]({{ site.baseurl }}{% link pages/examples/tj_random_all_to_all.md %})
+- [Groundstate energy of $$S=1/2$$ Heisenberg chain, "Hello World"]({{ site.baseurl }}{% link pages/examples/spinhalf_chain.md %})
+- [Groundstate energy of $$S=1/2$$ Heisenberg chain, with momentum conservation]({{ site.baseurl }}{% link pages/examples/spinhalf_chain_syms.md %})
 
-### With lattice symmetries
+## Computing dynamical spectral functions at $$T=0$$
+- [Dynamical spin structure factor of $$S=1/2$$ Heisenberg chain]({{ site.baseurl }}{% link pages/examples/hb_chain_dynamical_sf_nosyms.md %})
+- [Dynamical spin structure factor of $$S=1/2$$ Heisenberg chain, employing momentum conservation]({{ site.baseurl }}{% link pages/examples/hb_chain_dynamical_sf.md %})

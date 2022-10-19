@@ -36,7 +36,7 @@ int main() {
   // Define the number of lattice sites, number of upspins
   int n_sites = bonds.n_sites();
   int n_up = 2;
-  int n_dn = 1;
+  int n_dn = 2;
 
   // Create the corresponding block of the Spinhalf Hilbertspace
   auto block = tJ(n_sites, n_up, n_dn);
@@ -57,10 +57,9 @@ int main() {
   auto block_no_num = Spinhalf(n_sites);
 
   // ... create the Hamiltonian and compute eigenvalues
-  auto H_no_num = MatrixReal(bonds, couplings, block_no_sz, block_no_sz);
+  auto H_no_num = MatrixCplx(bonds, couplings, block_no_num, block_no_num);
   auto eigs_no_num = lila::EigenvaluesSym(H_no_num);
   LilaPrint(eigs_no_num);
 
-  
   return EXIT_SUCCESS;
 }

@@ -36,19 +36,10 @@ cd /path/to/hydra
 ```
 
 **Step 2:**
-Clone the hydra and [LiLA](https://github.com/awietek/lila) libraries from github
+Clone the hydra library from github
 
 ```bash
 git clone https://github.com/awietek/hydra.git
-git clone https://github.com/awietek/lila.git
-```
-
-*Remark:* [LiLA](https://github.com/awietek/lila) is a lightweight Linear Algebra library, which wraps the Fortran interface of Blas/Lapack. It is a header-only library, so no installation and compilation is required
-
-Optionally, you can also download the [lime](https://github.com/awietek/lime) library, which is a convenient C++ wrapper for reading and writing [hdf5](https://portal.hdfgroup.org/display/HDF5) files, useful for storing results of computations. 
-
-```bash
-git clone https://github.com/awietek/lime.git
 ```
 
 **Step 3:**
@@ -71,6 +62,12 @@ Compile the library
 
 ```bash
 make
+```
+
+You can also use multithreading to compile faster, i.e.
+
+```bash
+make -j
 ```
 
 If you want to use the MPI features of Hydra, you will also need to compile
@@ -119,22 +116,23 @@ When using Hydra, you will need to write a separate application. This applicatio
 
 ```bash
 # Define the compiler and the compile options
-cc       = clang++
-copt     = -O3 -Ofast -mavx -std=c++17 -m64 -Wno-return-type-c-linkage
+cc       = g++
+copt     = -O2 -std=c++17
 
 # Set the directory of lila and hydra here
-liladir  = /Users/awietek/Research/Software/lila
 hydradir = /Users/awietek/Research/Software/hydra
 
-# Choose the lapack backend for lila
-lilabackend = -DLILA_USE_ACCELERATE
-lapacklib   = -framework Accelerate
+# On Linux, you can use the lapack and blas libraries
+lapacklib   = -llapack -lblas
+
+# # On MacOs, you can use the Accelerate framework
+# lapacklib   = -framework Accelerate
 
 all:
-	$(cc) $(copt) -I$(liladir) -I$(hydradir) -L$(hydradir)/lib $(lilabackend) $(lapacklib) -lhydra spinhalf_chain.cpp -o spinhalf_chain
+	$(cc) $(copt) -I$(hydradir) -L$(hydradir)/lib  $(lapacklib) -lhydra main.cpp -o main
 ```
 
-In the first two lines we set the compiler and some options for it. Next we define the directories where the lila and hydra libraries are found. Then we set Blas/Lapack Backend for lila and add the lapack library, in this case the Accelerate framework. The last line is the actual compilation command. You can then compile the application using
+In the first two lines we set the compiler and some options for it. Next we define the directories where the hydra library is found. Then we set Blas/Lapack Backend.
 
 ```bash
 make
@@ -143,7 +141,7 @@ make
 and run the application with
 
 ```bash
-./spinhalf_chain
+./main
 ```
 
 Et voilà, you just ran your first ED using hydra!
