@@ -22,5 +22,5 @@ The produced data is the read from file and can be visualized using the followin
 
 This will plot the following image:
 {:refdef: style="text-align: center;"}
-<img src="{{site.baseurl}}/assets/img/logo.png" />
+![]({{site.baseurl}}/assets/img/hb_chain_dynamical_sf.png){: width="500" }
 {: refdef}
