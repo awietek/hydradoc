@@ -1,6 +1,5 @@
 source "https://rubygems.org"
 
-source 'https://rubygems.org'
 group :jekyll_plugins do
     gem 'github-pages'
     gem 'jekyll'
@@ -15,8 +14,6 @@ group :jekyll_plugins do
     gem 'jekyll-katex'
     gem 'kramdown-math-katex'
     gem 'webrick'
-    gem 'jekyll'
-    gem 'jekyll-scholar'
     gem 'jekyll-include-cache'
 end
 
