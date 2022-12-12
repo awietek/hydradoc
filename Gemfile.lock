@@ -94,6 +94,7 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  jekyll
   jekyll-include-cache
   jekyll-katex
   jekyll-scholar
