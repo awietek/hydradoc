@@ -25,6 +25,7 @@ Hydra is a C++ library for performing Exact Diagonalizations of quantum many-bod
 | ![]({{site.baseurl}}/assets/img/triangularwse2.png){: width="300" } | ![]({{site.baseurl}}/assets/img/hb_chain_dynamical_sf.png){: width="300" } |
 | ![]({{site.baseurl}}/assets/img/hubbard_doublon.png){: width="300" } | ![]({{site.baseurl}}/assets/img/j1j2_spectra.png){: width="300" } |
 
+<!--
 ## Publications using Hydra
 
 Hydra has used in several scientific publication in the past. Please contact us if you would like your paper to be added to this list. 
@@ -33,3 +34,4 @@ Hydra has used in several scientific publication in the past. Please contact us 
   {% bibliography %}
 </div>
 
+-->
