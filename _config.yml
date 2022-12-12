@@ -20,8 +20,7 @@ description: Homepage for Hydra Yxact Diagonalization Library
 
 
 permalink: pretty
-exclude: ["node_modules/", "*.gemspec", "*.gem", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile" , "docs/tests/", "create_hyde_markdown.sh", "create_hyde_markdown.log"
-]
+# exclude: ["node_modules/", "*.gemspec", "*.gem", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile" , "docs/tests/", "create_hyde_markdown.sh", "create_hyde_markdown.log"]
 
 # "Gemfile", "Gemfile.lock",
 
