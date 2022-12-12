@@ -106,6 +106,10 @@ color_scheme: light
 ga_tracking: UA-2709176-10
 ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
 
+# Includes & excludes
+include: ['_pages']
+exclude: [vendor]
+
 plugins:
   - jekyll-seo-tag
   - jekyll-email-protect
