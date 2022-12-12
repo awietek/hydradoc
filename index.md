@@ -6,7 +6,6 @@ nav_include: true
 description: "Hydra: High-performance Yxact Diagonalization Routines and Algorithms"
 years: [2022, 2021, 2020, 2019]
 permalink: /
-bibliography: papers.bib
 ---
 
 # Hydra
@@ -31,11 +30,6 @@ Hydra is a C++ library for performing Exact Diagonalizations of quantum many-bod
 Hydra has used in several scientific publication in the past. Please contact us if you would like your paper to be added to this list. 
 
 <div class="publications">
-
-{% for y in page.years %}
-  <h3 class="year">{{y}}</h3>
-  {% bibliography -f papers -q @*[year={{y}}]* %}
-{% endfor %}
-
+  {% bibliography %}
 </div>
 
