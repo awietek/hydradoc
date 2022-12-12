@@ -6,6 +6,7 @@ nav_include: true
 description: "Hydra: High-performance Yxact Diagonalization Routines and Algorithms"
 years: [2022, 2021, 2020, 2019]
 permalink: /
+bibliography: papers.bib
 ---
 
 # Hydra
