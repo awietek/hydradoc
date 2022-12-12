@@ -106,9 +106,14 @@ color_scheme: light
 ga_tracking: UA-2709176-10
 ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
 
-plugins: [jekyll-seo-tag, jekyll/scholar]
-plugins_dir: [jekyll/scholar]
-gems: [jekyll/scholar]
+plugins:
+  - jekyll-seo-tag
+  - jekyll-email-protect
+  - jekyll-github-metadata
+  - jekyll-paginate-v2
+  - jekyll/scholar
+  - jekyll-twitter-plugin
+  - jemoji
 
 markdown: kramdown
 kramdown:
