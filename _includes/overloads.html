@@ -1,14 +1,21 @@
 {% if page.overloads %}
-  <table class='declaration-table'>
-  {% for entity in page.overloads %}
-      <tr>
-        <td>
-          {% highlight c++ %}{{ entity[1].signature_with_names }}{% endhighlight %}
-        </td>
-        <td>({{ forloop.index }})</td>
-      </tr>
-  {% endfor %}
-  </table>
+  <!-- <table class='declaration-table'> -->
+  <!-- {% for entity in page.overloads %} -->
+  <!--     <tr> -->
+  <!--       <td> -->
+  <!--         {% highlight c++ %}{{ entity[1].signature_with_names }}{% endhighlight %} -->
+  <!--       </td> -->
+  <!--       <td>({{ forloop.index }})</td> -->
+  <!--     </tr> -->
+  <!-- {% endfor %} -->
+  <!-- </table> -->
+<h2>Definition</h2>
+
+{% highlight c++ %}
+{% for entity in page.overloads %}
+{{ entity[1].signature_with_names }}
+{% endfor %}
+{% endhighlight %}
 
   {{ page.description | markdownify }}
 

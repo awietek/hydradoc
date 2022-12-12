@@ -2,7 +2,7 @@
 layout: page
 title: User Guide
 nav_include: true
-nav_order: 4
+nav_order: 3
 ---
 
 # User guide
@@ -18,11 +18,106 @@ A step-by-step guide to using Hydra
 
 ---
 
-## Basics
-
-The central ingredients of quantum mechanics are Hilbert spaces, symmetries, operators, and linear algebra. In these first introductory chapters, we will discuss how these concepts are implemented in Hydra, and how to perform a first exact diagonalization.
+## Setting up your application
 
 ---
+
+### Writing your code using hydra
+
+After having compiled the hydra library, it is time to write our first program in hydra. As hydra is a C++ library we will need to define a main routine, include the hydra headers, and load the hydra and arma namespaces. 
+
+```c++
+#include <hydra/all.h>
+
+int main() {
+  using namespace hydra;
+  using namespace arma;
+
+  // Actual code goes here ....
+  
+  return EXIT_SUCCESS;
+}
+```
+
+`arma` is the namespace for the linear algebra library [Armadillo](https://arma.sourceforge.net/docs.html), which hydra is based on. These tasks have to performed for every code using hydra, so the above lines of code serve as a canvas for doing quantum many-body physics using hydra. 
+
+### Compiling your code using hydra
+
+Once you have written your code, say in a file called `main.cpp`, you will have to compile it in order to execute it. This requires you to tell the compiler the directory of the hydra header file `<hydra/all.h>`, and to link to the hydra library. Moreover, you will need to link your application to the [Lapack/BLAS](https://de.wikipedia.org/wiki/LAPACK) libraries. The easiest way to do all of this is to create a Makefile. On **Linux** systems this can be achieved by:
+
+```makefile
+hydradir = /path/to/hydra
+all:
+	g++ main.cpp -o main -O2 -std=c++17 -I$(hydradir) -L$(hydradir)/lib -lhydra -llapack -lblas
+```
+
+On **MacOS**, the standard Lapack/BLAS routines for linear algebra are provided through the `Accelerate` framework. Thus, you could use the following Makefile:
+
+```makefile
+hydradir = /path/to/hydra
+all:
+	g++ main.cpp -o main -O2 -std=c++17 -I$(hydradir) -L$(hydradir)/lib -lhydra -framework Accelerate
+```
+Once the Makefile is written you can simply call
+
+```bash
+make
+```
+
+to compile the code, and
+```bash
+./main
+```
+to run it. Alternatively, you might also decide on linking to the [Intel MKL](https://de.wikipedia.org/wiki/Math_Kernel_Library), see [Compiling hydra using Intel MKL](#compiling-hydra-using-intel-mkl).
+
+---
+
+## Basics
+
+---
+
+### Hilbertspaces and operators
+
+The fundamental objects in quantum mechancs are Hilbert spaces, operators and wave functions. These are alse central objects in Hydra. There are several Hilbert spaces defined in Hydra, like the [Spinhalf] To get started we want to create a simple exchange operator on two sites in a spin $$S=1/2$$ Hilbert space.
+
+$$ \mathcal{O} = \vec{S}_i \cdot \vec{S}_j = S_i^x S_j^x + S_i^y S_j^y + S_i^z S_j^z $$
+
+First we create the Hilbertspace spanned by
+
+$$|\downarrow\downarrow\rangle, |\downarrow\uparrow\rangle, |\uparrow\downarrow\rangle, |\uparrow\uparrow\rangle $$
+
+This is done by constructing a Spinhalf object on two sites
+
+```c++
+auto block = Spinhalf(2);
+```
+
+The keyword ```c++ auto ``` was introduced in C++11 and tells the compiler to automatically derive the type of an object. Next, we define the the exchange operator by creating a Bond object,
+
+```c++
+auto op = Bond("HB", {0, 1});
+```
+
+The first argument defines the type of the bond. Several special types are predefined. Alternatively, also a coupling matrix can be given as an argument instead of the string. The second argument is the array containing the number of sites the operator acts on, in this case 0 and 1. Hydra always starts counting at 0. For more details how to define local operators see ...
+
+Finally, we create the matrix of this operator in the computational basis and print it, 
+``` c++
+auto mat = matrix_real(op, block);
+HydraPrint(mat);
+```
+
+### Linear Algebra
+We are not just interested in writing down matrices but in doing computations with them. Hence, we will need to perform basic linear algebra algorithms and routines on our constructed objects. To do so, hydra relies on the Armadillo library, which is a powerful and convenient linear algebra library for C++, which wraps the efficient Lapack and Blas routines.
+
+We might, for example be interested in the eigenvalues of a matrix. In the above case, we know that the eigenvalues $$\varepsilon$$ and eigenvectors of $$ \vec{S}_i \cdot \vec{S}_j $$ are simply,
+
+$$ \varepsilon_s = -\frac{3}{4}, \quad |\psi_s\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow \rangle)$$
+
+for the singlet state, and
+
+$$ \varepsilon_t = \frac{1}{4}, \quad |\psi_t\rangle = |\uparrow\uparrow\rangle, \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow \rangle), |\downarrow\downarrow \rangle$$
+
+for the three triplet states. To compute this 
 
 ### Hilbertspaces and blocks
  A physical system is typically described by a Hamiltonian operator acting on a Hilbert space. In this introductory material we will consider a simple example, the spin-$$1/2$$ Heisenberg model on a periodic chain lattice. It's Hilbert space $$\mathcal{H}$$ is the tensor product of local spins $$ \sigma_i = \uparrow,\downarrow$$ on a lattice,

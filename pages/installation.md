@@ -69,13 +69,13 @@ You can also use multithreading to compile faster, i.e.
 make -j
 ```
 
-That's it, you're all set!
+That's it, you're all set! There are several options when compiling. For example you might want to enable multithreading or use the Intel MKL library for linear algebra. You can find more information on specific compile instructions in the section [Special Compilation Instructions]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}).
 
 ---
 
 ## Running tests
 
-In order to make sure, everything is workign properly, you can run full test suite on your system.
+In order to make sure, everything is working properly, you can run full test suite on your system.
 
 **Step 1:** Compile the tests
 
@@ -83,7 +83,7 @@ In order to make sure, everything is workign properly, you can run full test sui
 make test
 ```
 
-This creates the executable "test/tests"
+This creates the executable "test/tests". To run the tests execute,
 
 **Step 2:** Run the tests
 ```bash
@@ -91,6 +91,8 @@ cd test
 ./tests
 ```
 
+
+<!--
 ---
 
 ## Compiling applications
@@ -128,3 +130,4 @@ and run the application with
 ```
 
 Et voilà, you just ran your first ED using hydra!
+-->
