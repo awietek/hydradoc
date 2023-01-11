@@ -2,7 +2,7 @@
 layout: method
 title: inverse
 owner: Alex Wietek
-brief: Returns the inverse permutation $$P^{-1}$$.
+brief: Returns the inverse permutation $P^{-1}$.
 tags:
   - method
 defined_in_file: "hydra/symmetries/permutation.h"
