@@ -1,11 +1,11 @@
 ---
 layout: method
 title: end
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Iterator to end() of Permutation vector
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation_group.h"
 overloads:
   std::vector<hydra::Permutation>::const_iterator end() const:
     description: __OPTIONAL__

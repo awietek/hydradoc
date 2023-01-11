@@ -1,11 +1,11 @@
 ---
 layout: method
 title: n_symmetries
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: number of symmetries (i.e. size of group)
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation_group.h"
 overloads:
   int n_symmetries() const:
     description: __OPTIONAL__

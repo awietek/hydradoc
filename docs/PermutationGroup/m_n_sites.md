@@ -1,11 +1,11 @@
 ---
 layout: method
 title: n_sites
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: number of sites
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation_group.h"
 overloads:
   int n_sites() const:
     description: __OPTIONAL__

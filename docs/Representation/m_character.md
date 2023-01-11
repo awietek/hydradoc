@@ -1,11 +1,11 @@
 ---
 layout: method
 title: character
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: character of given group element index
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/representation.h"
 overloads:
   hydra::complex character(int) const:
     arguments:

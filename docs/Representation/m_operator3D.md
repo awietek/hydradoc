@@ -1,11 +1,11 @@
 ---
 layout: method
 title: operator=
-owner: __MISSING__
+owner: Alex Wietek
 brief: __MISSING__
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/representation.h"
 overloads:
   hydra::Representation & operator=(const hydra::Representation &):
     arguments:

@@ -1,11 +1,11 @@
 ---
 layout: method
 title: allowed_symmetries
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: allowed symmetries of the Representation
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/representation.h"
 overloads:
   std::vector<int> allowed_symmetries() const:
     description: __OPTIONAL__

@@ -1,11 +1,11 @@
 ---
 layout: method
 title: characters
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: gets all characters
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/representation.h"
 overloads:
   const std::vector<complex> & characters() const:
     description: __OPTIONAL__

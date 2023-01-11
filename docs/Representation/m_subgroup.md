@@ -1,11 +1,11 @@
 ---
 layout: method
 title: subgroup
-owner: __MISSING__
+owner: Alex Wietek
 brief: __MISSING__
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/representation.h"
 overloads:
   hydra::Representation subgroup(const std::vector<int> &) const:
     arguments:

@@ -1,11 +1,11 @@
 ---
 layout: method
 title: begin
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Iterator to begin() of Permutation vector
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation_group.h"
 overloads:
   std::vector<hydra::Permutation>::const_iterator begin() const:
     description: __OPTIONAL__

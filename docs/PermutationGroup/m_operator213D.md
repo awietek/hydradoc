@@ -1,11 +1,11 @@
 ---
 layout: method
 title: operator!=
-owner: __MISSING__
+owner: Alex Wietek
 brief: __MISSING__
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation_group.h"
 overloads:
   bool operator!=(const hydra::PermutationGroup &) const:
     arguments:

@@ -1,43 +1,25 @@
 ---
 layout: method
 title: PermutationGroup
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Constructors for the PermutationGroup class
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation_group.h"
 is_ctor: true
 overloads:
   PermutationGroup():
     annotation:
       - default
-    description: __MISSING__
+    description: default constructor
     return: __OPTIONAL__
     signature_with_names: PermutationGroup()
-  PermutationGroup(const hydra::PermutationGroup &):
-    arguments:
-      - description: __OPTIONAL__
-        name: unnamed-0
-        type: const hydra::PermutationGroup &
-        unnamed: true
-    description: __MISSING__
-    return: __OPTIONAL__
-    signature_with_names: PermutationGroup(const hydra::PermutationGroup &)
-  PermutationGroup(hydra::PermutationGroup &&):
-    arguments:
-      - description: __OPTIONAL__
-        name: unnamed-0
-        type: hydra::PermutationGroup &&
-        unnamed: true
-    description: __MISSING__
-    return: __OPTIONAL__
-    signature_with_names: PermutationGroup(hydra::PermutationGroup &&)
   explicit PermutationGroup(const std::vector<Permutation> &):
     arguments:
-      - description: __OPTIONAL__
+      - description: vector of Permutation objects
         name: permutations
         type: const std::vector<Permutation> &
-    description: __MISSING__
+    description: constructs a PermutationGroup out of a vector of permutations, the group axioms are being validated
     return: __OPTIONAL__
     signature_with_names: explicit PermutationGroup(const std::vector<Permutation> & permutations)
 ---

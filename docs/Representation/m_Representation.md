@@ -1,54 +1,37 @@
 ---
 layout: method
 title: Representation
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Constructors for Representation objects
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/representation.h"
 is_ctor: true
 overloads:
   Representation():
     annotation:
       - default
-    description: __MISSING__
+    description: default constructor
     return: __OPTIONAL__
     signature_with_names: Representation()
-  Representation(const hydra::Representation &):
+ explicit Representation(const std::vector<complex> &):
     arguments:
-      - description: __OPTIONAL__
-        name: unnamed-0
-        type: const hydra::Representation &
-        unnamed: true
-    description: __MISSING__
-    return: __OPTIONAL__
-    signature_with_names: Representation(const hydra::Representation &)
-  Representation(const std::vector<complex> &, const std::vector<int> &):
-    arguments:
-      - description: __OPTIONAL__
+      - description: vector of complex numbers describing the characters 
         name: characters
         type: const std::vector<complex> &
-      - description: __OPTIONAL__
-        name: allowed_symmetries
-        type: const std::vector<int> &
-    description: __MISSING__
-    return: __OPTIONAL__
-    signature_with_names: Representation(const std::vector<complex> & characters, const std::vector<int> & allowed_symmetries)
-  Representation(hydra::Representation &&):
-    arguments:
-      - description: __OPTIONAL__
-        name: unnamed-0
-        type: hydra::Representation &&
-        unnamed: true
-    description: __MISSING__
-    return: __OPTIONAL__
-    signature_with_names: Representation(hydra::Representation &&)
-  explicit Representation(const std::vector<complex> &):
-    arguments:
-      - description: __OPTIONAL__
-        name: characters
-        type: const std::vector<complex> &
-    description: __MISSING__
+    description: constructs 1D irrep from characters of the representation
     return: __OPTIONAL__
     signature_with_names: explicit Representation(const std::vector<complex> & characters)
+  Representation(const std::vector<complex> &, const std::vector<int> &):
+    arguments:
+      - description: vector of complex numbers describing the characters
+        name: characters
+        type: const std::vector<complex> &
+      - description: vector of allowed symmetries of group (can matter with Little groups)
+        name: allowed_symmetries
+        type: const std::vector<int> &
+    description: constructs 1D irrep from characters and allowed symmetries of the representation
+    return: __OPTIONAL__
+    signature_with_names: Representation(const std::vector<complex> & characters, const std::vector<int> & allowed_symmetries)
+
 ---

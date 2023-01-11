@@ -1,11 +1,11 @@
 ---
 layout: class
 title: Representation
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Class describing a representation of a symmetry group
 tags:
   - class
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/representation.h"
 declaration: "\nclass hydra::Representation;"
 dtor: unspecified
 fields:

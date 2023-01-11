@@ -1,11 +1,11 @@
 ---
 layout: class
 title: PermutationGroup
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Class describing a mathematical permutation group.
 tags:
   - class
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation_group.h"
 declaration: "\nclass hydra::PermutationGroup;"
 dtor: unspecified
 fields:

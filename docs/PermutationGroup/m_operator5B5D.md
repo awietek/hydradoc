@@ -1,11 +1,11 @@
 ---
 layout: method
 title: operator[]
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: gets the Permutation with given index
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation_group.h"
 overloads:
   const hydra::Permutation & operator[](int) const:
     arguments:
