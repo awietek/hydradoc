@@ -17,18 +17,16 @@ Overview and detailed documentation of the Hydra API
 1. TOC
 {:toc}
 
-## Special compilation Instructions
-The following sections explain in detail how enable particular advanced features by the appropriate compilation settings. 
-* [OpenMP support]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#openmp-support)
-* [Intel MKL support]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#intel-mkl-support)
-* [Hdf5 support]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#hdf5-support)
-* [OpenMP and IntelMKL and hdf5 support]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#openmp-and-intelmkl-and-hdf5-support)
-* [BMI2 instructions]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#bmi2-instructions)
 
 ## Blocks
-* [Spinhalf]({{ site.baseurl }}{% link docs/Spinhalf/m_Spinhalf.md %})
-* [tJ]({{ site.baseurl }}{% link docs/tJ/m_tJ.md %})
-* [Electron]({{ site.baseurl }}{% link docs/Electron/m_Electron.md %})
+* [Spinhalf]({{ site.baseurl }}{% link docs/Spinhalf/index.md %})
+* [tJ]({{ site.baseurl }}{% link docs/tJ/index.md %})
+* [Electron]({{ site.baseurl }}{% link docs/Electron/index.md %})
+
+## Symmetries
+* [Permutation]({{ site.baseurl }}{% link docs/Permutation/index.md %})
+* [symmetrized_operator]({{ site.baseurl }}{% link docs/f_symmetrized_operator.md %})
+
 
 ## Sparse Linear Algebra
 ### Shortcuts
@@ -39,5 +37,11 @@ The following sections explain in detail how enable particular advanced features
 * [BondList](../../docs/BondList/index.html)
 
 
-## Symmetries
-* [symmetrized_operator]({{ site.baseurl }}{% link docs/f_symmetrized_operator.md %})
+
+## Special compilation Instructions
+The following sections explain in detail how enable particular advanced features by the appropriate compilation settings. 
+* [OpenMP support]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#openmp-support)
+* [Intel MKL support]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#intel-mkl-support)
+* [Hdf5 support]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#hdf5-support)
+* [OpenMP and IntelMKL and hdf5 support]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#openmp-and-intelmkl-and-hdf5-support)
+* [BMI2 instructions]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}#bmi2-instructions)

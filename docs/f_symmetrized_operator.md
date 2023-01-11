@@ -5,17 +5,17 @@ owner: Alex Wietek
 brief: Construct a symmetrized operator from a local operator, PermutationGroup, and optionally an Irrep.
 tags:
   - function
-defined_in_file: "hydra/operators/symmetrized_operator.h"
+defined_in_file: ""
 overloads:
   hydra::BondList symmetrized_operator(const hydra::Bond &, const hydra::PermutationGroup &):
     arguments:
       - description: __OPTIONAL__
         name: bond
         type: const hydra::Bond &
-      - description:  __OPTIONAL__
+      - description: __OPTIONAL__
         name: group
         type: const hydra::PermutationGroup &
-    description: Construct symmetrized operator from single Bond and PermutationGroup 
+    description: Construct symmetrized operator from single Bond and PermutationGroup
     return: __OPTIONAL__
     signature_with_names: hydra::BondList symmetrized_operator(const hydra::Bond & bond, const hydra::PermutationGroup & group)
   hydra::BondList symmetrized_operator(const hydra::Bond &, const hydra::PermutationGroup &, const hydra::Representation &):

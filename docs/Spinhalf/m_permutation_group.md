@@ -1,8 +1,8 @@
 ---
 layout: method
 title: permutation_group
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: returns the permutation group, if defined
 tags:
   - method
 defined_in_file: ""

@@ -148,31 +148,29 @@ window.hyde_index = {
                           {% endfor %}
                         </table>`,
                     {% when "method" %}
-                        {% assign methods = layout.items %}
-                        "method": `<h3>Member Functions</h3>
+                    {% assign methods = layout.items | sort: "title" %}
+            "method": `
+<h3>                     {% for p in methods %}
+                          {% if p.is_ctor %}
+                           <a href='{{p.url | relative_url}}'>Constructors</a>
+                          {% endif %}
+                        {% endfor %}
+</h3>
+
+
+<h3>Member Functions</h3>
                         <table class='definition-table'>
 
-                        {% for p in methods %}
-                          {% if p.is_ctor %}
-                            <tr>
-                                <td class='decl' colspan='2'><a href='{{p.url | relative_url}}'>(constructor)</a></td>
-                            </tr>
-                          {% endif %}
-                        {% endfor %}
 
-                        {% for p in methods %}
-                          {% if p.is_dtor %}
-                            <tr>
-                                <td class='decl' colspan='2'><a href='{{p.url | relative_url}}'>(destructor)</a></td>
-                            </tr>
-                          {% endif %}
-                        {% endfor %}
+
 
                         {% for p in methods %}
                           {% if p.is_ctor or p.is_dtor %}
                             {% continue %}
                           {% endif %}
 
+
+                          {% unless p.title contains "operator" %}
                           <tr>
                             <td class='decl'>
                               <div><a href="{{p.url | relative_url}}">{{ p.title | escape }}</a></div>
@@ -190,8 +188,49 @@ window.hyde_index = {
                               {% endif %}
                             </td>
                           </tr>
+                          {% endunless %}
+
+
                         {% endfor %}
-                        </table>`,
+                        </table>
+
+
+                        <h3>Operators</h3>
+                        <table class='definition-table'>
+
+                        {% for p in methods %}
+                          {% if p.is_ctor or p.is_dtor %}
+                            {% continue %}
+                          {% endif %}
+
+
+                          {% if p.title contains "operator" %}
+                          <tr>
+                            <td class='decl'>
+                              <div><a href="{{p.url | relative_url}}">{{ p.title | escape }}</a></div>
+                            </td>
+                            <td class='defn'>
+                              {% if p.brief %}
+                                {{ p.brief | markdownify}}
+                              {% elsif p.description %}
+                                {{ p.description | markdownify}}
+                              {% else %}
+                                {{ '_No details given_' | markdownify}}
+                              {% endif %}
+                              {% if p.annotation %}
+                                <span class='annotation'>({{p.annotation | join: ", "}})</span>
+                              {% endif %}
+                            </td>
+                          </tr>
+                          {% endif %}
+
+
+                        {% endfor %}
+                        </table>
+`,
+            {% when "constructor" %}
+	    "constructor": 'hello'
+	    ,
                     {% when "enumeration" %}
                     {% assign enums = layout.items %}
                     "enumeration": `<h3>Enumerations</h3>

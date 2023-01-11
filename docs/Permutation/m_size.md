@@ -1,14 +1,14 @@
 ---
 layout: method
 title: size
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: size of permutation
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation.h"
 overloads:
   int size() const:
-    description: __OPTIONAL__
-    return: __OPTIONAL__
+    description: returns size of permutation
+    return: size of permutation
     signature_with_names: int size() const
 ---

@@ -1,8 +1,8 @@
 ---
 layout: method
 title: symmetric
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: flag whether permutation symmetries are used
 tags:
   - method
 defined_in_file: ""

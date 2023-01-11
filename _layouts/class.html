@@ -13,25 +13,25 @@ layout: default
 
         {{page.brief | markdownify}}
 
-        {% if page.declaration.first != empty %}
-           <table class='declaration-table'>
-            {% for item in page.declaration %}
-            <tr>
-              <td>
-                {% highlight cpp %}{{ item }}{% endhighlight %}
-              </td>
-            </tr>
-           {% endfor %}
-           </table>
-        {% else %}
-            {% highlight c++ %}{{ page.declaration }}{% endhighlight %}
-        {% endif %}
+        <!-- {% if page.declaration.first != empty %} -->
+        <!-- <table class='declaration-table'> -->
+        <!--     {% for item in page.declaration %} -->
+        <!--     <tr> -->
+        <!--       <td> -->
+        <!--         {% highlight cpp %}{{ item }}{% endhighlight %} -->
+        <!--       </td> -->
+        <!--     </tr> -->
+        <!--    {% endfor %} -->
+        <!--    </table> -->
+        <!-- {% else %} -->
+        <!--     {% highlight c++ %}{{ page.declaration }}{% endhighlight %} -->
+        <!-- {% endif %} -->
 
         {{page.description | markdownify}}
 
         <!-- {% include associated_enumerations.html %} -->
 
-        {% include associated_typedefs.html %}
+        <!-- {% include associated_typedefs.html %} -->
 
         <!-- {% include associated_fields.html %} -->
 

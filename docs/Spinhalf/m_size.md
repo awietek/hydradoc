@@ -1,8 +1,8 @@
 ---
 layout: method
 title: size
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: returns the dimension of the block
 tags:
   - method
 defined_in_file: ""

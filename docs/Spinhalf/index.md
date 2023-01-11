@@ -1,11 +1,11 @@
 ---
 layout: class
 title: Spinhalf
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Block describing spin $$S=1/2$$ Hilbert spaces
 tags:
   - class
-defined_in_file: ""
+defined_in_file: "hydra/blocks/spinhalf/spinhalf.h"
 declaration: "\nclass hydra::Spinhalf;"
 dtor: unspecified
 typedefs:

@@ -1,43 +1,25 @@
 ---
 layout: method
 title: Permutation
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Constructors for the Permutation class
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation.h"
 is_ctor: true
 overloads:
   Permutation():
     annotation:
       - default
-    description: __MISSING__
+    description: default constructor
     return: __OPTIONAL__
     signature_with_names: Permutation()
-  Permutation(const hydra::Permutation &):
-    arguments:
-      - description: __OPTIONAL__
-        name: unnamed-0
-        type: const hydra::Permutation &
-        unnamed: true
-    description: __MISSING__
-    return: __OPTIONAL__
-    signature_with_names: Permutation(const hydra::Permutation &)
-  Permutation(hydra::Permutation &&):
-    arguments:
-      - description: __OPTIONAL__
-        name: unnamed-0
-        type: hydra::Permutation &&
-        unnamed: true
-    description: __MISSING__
-    return: __OPTIONAL__
-    signature_with_names: Permutation(hydra::Permutation &&)
   Permutation(std::initializer_list<int>):
     arguments:
       - description: __OPTIONAL__
         name: perm
         type: std::initializer_list<int>
-    description: __MISSING__
+    description: constructs a Permutation from a list of integers
     return: __OPTIONAL__
     signature_with_names: Permutation(std::initializer_list<int> perm)
   explicit Permutation(const std::vector<int> &):
@@ -45,7 +27,7 @@ overloads:
       - description: __OPTIONAL__
         name: perm
         type: const std::vector<int> &
-    description: __MISSING__
+    description: constructs a Permutation from a vector of integers
     return: __OPTIONAL__
     signature_with_names: explicit Permutation(const std::vector<int> & perm)
 ---

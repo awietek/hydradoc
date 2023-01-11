@@ -1,27 +1,10 @@
 {% if page.overloads %}
-  <!-- <table class='declaration-table'> -->
-  <!-- {% for entity in page.overloads %} -->
-  <!--     <tr> -->
-  <!--       <td> -->
-  <!--         {% highlight c++ %}{{ entity[1].signature_with_names }}{% endhighlight %} -->
-  <!--       </td> -->
-  <!--       <td>({{ forloop.index }})</td> -->
-  <!--     </tr> -->
-  <!-- {% endfor %} -->
-  <!-- </table> -->
 <h2>Definition</h2>
-
-{% highlight c++ %}
-{% for entity in page.overloads %}
-{{ entity[1].signature_with_names }}
-{% endfor %}
-{% endhighlight %}
-
-  {{ page.description | markdownify }}
-
+  {{- page.description | markdownify -}}
   <ol>
   {% for entity in page.overloads %}
-    <li>
+  <li>
+    {% highlight c++ %}{{- entity[1].signature_with_names -}}{% endhighlight %}
       {% if entity[1].annotation %}
         <span class='annotation'>({{entity[1].annotation | join: ", "}})</span>
       {% endif %}
@@ -54,7 +37,8 @@
       {% if entity[1].return and (entity[1].return != "__OPTIONAL__") %}
         <b>Returns:</b> {{entity[1].return | escape}}
       {% endif %}
-    </li>
+  </li>
+  <hr>
   {% endfor %}
   </ol>
 {% endif %}

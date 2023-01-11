@@ -1,11 +1,11 @@
 ---
 layout: class
 title: Permutation
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: Class describing a permutation of lattice sites
 tags:
   - class
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation.h"
 declaration: "\nclass hydra::Permutation;"
 dtor: unspecified
 fields:

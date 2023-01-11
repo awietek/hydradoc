@@ -1,8 +1,8 @@
 ---
 layout: method
 title: indexing
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: returns SpinhalfIndexing object
 tags:
   - method
 defined_in_file: ""

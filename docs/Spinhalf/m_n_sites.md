@@ -1,8 +1,8 @@
 ---
 layout: method
 title: n_sites
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: returns the number of sites
 tags:
   - method
 defined_in_file: ""

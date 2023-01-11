@@ -1,11 +1,11 @@
 ---
 layout: method
 title: operator[]
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: returns permuted index $$P(i)$$
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation.h"
 overloads:
   int operator[](int) const:
     arguments:
@@ -13,6 +13,6 @@ overloads:
         name: i
         type: int
     description: __OPTIONAL__
-    return: __OPTIONAL__
+    return: permuted index
     signature_with_names: int operator[](int i) const
 ---

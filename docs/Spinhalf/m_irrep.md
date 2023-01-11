@@ -1,8 +1,8 @@
 ---
 layout: method
 title: irrep
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: returns the irreducible representation, if defined
 tags:
   - method
 defined_in_file: ""

@@ -1,8 +1,8 @@
 ---
 layout: method
 title: n_dn
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: returns the number of down spins
 tags:
   - method
 defined_in_file: ""

@@ -5,7 +5,7 @@ owner: __MISSING__
 brief: __MISSING__
 tags:
   - method
-defined_in_file: ""
+defined_in_file: "hydra/symmetries/permutation.h"
 overloads:
   hydra::Permutation & operator=(const hydra::Permutation &):
     arguments:

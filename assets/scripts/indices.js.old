@@ -150,11 +150,11 @@ window.hyde_index = {
                     {% when "method" %}
                         {% assign methods = layout.items %}
                         "method": `<h3>Member Functions</h3>
-                        <table class='declaration-table'>
+                        <table class='definition-table'>
 
                         {% for p in methods %}
                           {% if p.is_ctor %}
-                            <tr padding =0>
+                            <tr>
                                 <td class='decl' colspan='2'><a href='{{p.url | relative_url}}'>(constructor)</a></td>
                             </tr>
                           {% endif %}
@@ -179,7 +179,7 @@ window.hyde_index = {
                             </td>
                             <td class='defn'>
                               {% if p.brief %}
-                                {{ p.brief | markdownify }}
+                                {{ p.brief | markdownify}}
                               {% elsif p.description %}
                                 {{ p.description | markdownify}}
                               {% else %}

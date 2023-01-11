@@ -1,8 +1,8 @@
 ---
 layout: method
 title: n_up
-owner: __MISSING__
-brief: __MISSING__
+owner: Alex Wietek
+brief: returns the number of "up" spins
 tags:
   - method
 defined_in_file: ""

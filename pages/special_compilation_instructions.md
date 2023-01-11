@@ -87,7 +87,7 @@ all:
 Notice again, that the linking and compilation commands may differ on your specific platform.
 
 ## BMI2 instructions
-Several operations in hydra can be sped up by using a specific set of advanced CPU instructions called the (Bit manipulation instructions)[https://de.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets] on x86-64 architectures. To enable this optimization, you can set the optimization flag `-march=native` when compiling both the hydra library and your application. While this can give significant speedup for certain applications, this can cause problems if the code is compiled using these instructions on one machine, but then run on another which does not feature these instructions. A typical error that will be encountered is
+Several operations in hydra can be sped up by using a specific set of advanced CPU instructions called the [Bit manipulation instructions](https://de.wikipedia.org/wiki/Bit_Manipulation_Instruction_Sets) on x86-64 architectures. To enable this optimization, you can set the optimization flag `-march=native` when compiling both the hydra library and your application. While this can give significant speedup for certain applications, this can cause problems if the code is compiled using these instructions on one machine, but then run on another which does not feature these instructions. A typical error that will be encountered is
 ```bash
 Invalid instruction!
 ```
