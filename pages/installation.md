@@ -5,10 +5,21 @@ nav_include: true
 nav_order: 2
 ---
 
-# Installation
+# Installation 
 {: .no_toc }
 Instructions how to compile the library, run tests, and compile applications
 {: .fs-6 .fw-300 }
+
+## Quickstart
+To use hydra, three basic steps are required
+
+1. Compiling the library (needs to be done only once) 
+2. Write your application code
+3. Compile your application code
+
+These steps are explained in detail below.
+
+---
 
 ## Table of contents
 {: .no_toc .text-delta }
@@ -19,9 +30,10 @@ Instructions how to compile the library, run tests, and compile applications
 ---
 
 ## Prerequisites
-* A C++ compiler that supports C++17, e.g. `g++` or `clang`, and `Make`
-* An implementation of the Blas/Lapack routines, e.g. the Netlib Blas/Lapack, IntelMKL or Accelerate on OSX.
-* `git` version control system
+* A C++ compiler that supports C++17, e.g. GNU's `g++`, `clang`, or Intel's `icpx`
+* [CMake](https://cmake.org/) build system generator 
+* A linear algebra backend, e.g. the Netlib Blas/Lapack, IntelMKL or Accelerate on OSX.
+* [git](https://git-scm.com/) version control system
 
 ---
 
@@ -39,95 +51,136 @@ Clone the hydra library from github
 
 ```bash
 git clone https://github.com/awietek/hydra.git
+cd hydra
 ```
 
 **Step 3:**
-Create a copy of "options.mk"
+Build the library using [CMake](https://cmake.org/)
 
 ```bash
-cd hydra
-cp options.mk.sample options.mk
-```
-
-**Step 4:**
-Modify your copy of "options.mk" for your system using your favorite text editor. The instructions for doing so are in the file "options.mk". 
-
-```bash
-emacs options.mk
-```
-
-**Step 5:**
-Compile the library
-
-```bash
+mkdir build
+cd build
+cmake ..
 make
 ```
 
-You can also use multithreading to compile faster, i.e.
+Compilation (i.e. using `make`) can take a while. If you want to compile in parallel, use
 
 ```bash
 make -j
 ```
 
-That's it, you're all set! There are several options when compiling. For example you might want to enable multithreading or use the Intel MKL library for linear algebra. You can find more information on specific compile instructions in the section [Special Compilation Instructions]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}).
+The compilation of the library can be adjusted, e.g. for using a specific compiler, linear algebra backend, or multithreading. More information on specific compile instructions can be found in the section [Special Compilation Instructions]({{ site.baseurl }}{% link pages/special_compilation_instructions.md %}).
 
 ---
 
-## Running tests
+## Writing an application code
 
-In order to make sure, everything is working properly, you can run full test suite on your system.
-
-**Step 1:** Compile the tests
+To write a particular application code, first choose a different directory.
 
 ```bash
-make test
+cd /path/to/application
 ```
 
-This creates the executable "test/tests". To run the tests execute,
+Then it is time to write our first hydra application. In this example we simply compute the ground state energy of a spin $$S=1/2$$ Heisenberg model,
 
-**Step 2:** Run the tests
-```bash
-cd test
-./tests
+$$
+H = J \sum_{\langle i, j \rangle} \mathbf{S}_i\cdot\mathbf{S}_j,
+$$
+
+on a one-dimensional chain lattice with periodic boundary conditions, where $$\mathbf{S}_i = (S^x_i, S^y_i, S^z_i)$$. The code is written to a file called `main.cpp`:
+
+```c++
+#include <hydra/all.h>
+
+int main() {
+  using namespace hydra;
+
+  int n_sites = 16;
+  int nup = n_sites / 2;
+
+  // Define the Hilbert space block
+  auto block = Spinhalf(n_sites, nup);
+
+  // Define the nearest-neighbor Heisenberg Hamiltonian
+  BondList bonds;
+  for (int i = 0; i < n_sites; ++i) {
+    bonds << Bond("HB", "J", {i, (i + 1) % n_sites});
+  }
+
+  // Set the coupling constant "J" to one
+  bonds["J"] = 1.0;
+
+  // Compute and print the ground state energy
+  double e0 = eig0(bonds, block);
+  HydraPrint(e0);
+  
+  return EXIT_SUCCESS;
+}
 ```
 
-
-<!--
 ---
 
-## Compiling applications
+## Compiling the application code
 
-When using Hydra, you will need to write a separate application. This application then needs to be linked to the hydra and lapack libraries and the lila and hydra headers need to be included. We have several examples of applications in the folder `examples` in the root directory of hydra. To compile these applications, you could use a Makefile. In the folder `examples/spinhalf_chain` you find the application code `spinhalf_chain.cpp`, which can be compiled using the `Makefile` in the same folder. Let's have a look at it:
+The above code then needs to be compiled. To do so, we create a fille called `CMakeLists.txt`.
 
-```bash
-# Define the compiler and the compile options
-cc       = g++
-copt     = -O2 -std=c++17
+```cmake
+cmake_minimum_required(VERSION 3.15)
 
-# Set the directory of lila and hydra here
-hydradir = /Users/awietek/Research/Software/hydra
+project(
+  spinhalf_chain_e0
+  VERSION 1.0
+  LANGUAGES CXX
+)
 
-# On Linux, you can use the lapack and blas libraries
-lapacklib   = -llapack -lblas
+add_executable(main main.cpp)
 
-# # On MacOs, you can use the Accelerate framework
-# lapacklib   = -framework Accelerate
+# set hydra compile options
+find_package(hydra REQUIRED HINTS "/path/to/hydra")
+target_compile_features(main PUBLIC cxx_std_17)
+target_compile_definitions(main PUBLIC ${HYDRA_DEFINITIONS})
+target_link_libraries(main PUBLIC ${HYDRA_LIBRARIES})
+target_include_directories(main PUBLIC ${HYDRA_INCLUDE_DIRS})
+set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 
-all:
-	$(cc) $(copt) -I$(hydradir) -L$(hydradir)/lib  $(lapacklib) -lhydra main.cpp -o main
 ```
 
-In the first two lines we set the compiler and some options for it. Next we define the directories where the hydra library is found. Then we set Blas/Lapack Backend.
+Notice, that `/path/to/hydra` should be replaced by the directory you installed hydra in. Apart from this, the above `CMakeLists.txt` should be usable without changes for most hydra applications.
+
+To build your application, again invoke `cmake` by executing the commands
 
 ```bash
+mkdir build
+cd build
+cmake ..
 make
 ```
 
-and run the application with
+And there you have it. Your first hydra application is now located at `/path/to/application/build/main`. To execute it, simply run
 
 ```bash
 ./main
 ```
 
 Et voilà, you just ran your first ED using hydra!
--->
+
+---
+
+## Compiling and running tests
+
+Hydra features an extensive set of unit tests to ensure the correctness of its computations. These are automatically run on GitHub with continuous integration testing on several platforms. While not striclty necessary, it is still a good idea to also compile and run the tests on your machine. To do so, you need to compile the hydra library with tests. To do so, use the following commands to compile hydra,
+
+```bash
+mkdir build
+cd build
+cmake .. -DBUILD_TESTS=On
+make
+```
+
+The tests can then be run using,
+
+```bash
+test/tests
+```
+
